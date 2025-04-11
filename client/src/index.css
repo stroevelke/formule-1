@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 15% 10%;
+    --foreground: 0 0% 98%;
+    
+    --card: 240 13% 13%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 240 13% 13%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 357 100% 44%;
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 240 13% 15%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 240 6% 20%;
+    --muted-foreground: 240 5% 65%;
+    
+    --accent: 240 6% 20%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 6% 25%;
+    --input: 240 6% 25%;
+    --ring: 240 5% 65%;
+    
+    --chart-1: 217 85% 49%;
+    --chart-2: 28 100% 50%;
+    --chart-3: 144 77% 55%;
+    --chart-4: 357 100% 44%;
+    --chart-5: 264 67% 51%;
+
+    --radius: 0.5rem;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply font-sans bg-background text-foreground antialiased overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .f1-heading {
+    @apply font-f1 font-bold;
+  }
+  
+  .track-path {
+    stroke-dasharray: 1600;
+    stroke-dashoffset: 1600;
+    animation: dash 3s linear forwards;
+  }
+  
+  .gauge {
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  .driver-card {
+    transition: transform 0.2s ease-out;
+  }
+  
+  .driver-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .loading-lights {
+    animation: lights 2s ease-in-out forwards;
+  }
+  
+  .metric-value {
+    transition: all 0.3s ease;
+  }
+  
+  .telemetry-bar {
+    transition: width 0.5s ease-out;
+  }
+  
+  .pulse-dot {
+    animation: pulse-dot 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  }
+  
+  .car-position {
+    transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes lights {
+  0%, 20% { opacity: 0; }
+  30%, 90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: scale(1.05); 
+    opacity: 0.8; 
+  }
+}
+
+@keyframes flash {
+  0% { 
+    opacity: 1; 
+    background-color: rgba(225, 6, 0, 0.4);
+  }
+  100% { 
+    opacity: 0; 
+    background-color: transparent;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { 
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .text-f1-red {
+    @apply text-[#E10600];
+  }
+  
+  .text-f1-purple {
+    @apply text-[#9146FF];
+  }
+  
+  .text-f1-green {
+    @apply text-[#27F06D];
+  }
+  
+  .text-f1-yellow {
+    @apply text-[#FFBC00];
+  }
+  
+  .bg-f1-black {
+    @apply bg-[#15151E];
+  }
+  
+  .bg-f1-dark {
+    @apply bg-[#1E1E23];
+  }
+  
+  .bg-f1-red {
+    @apply bg-[#E10600];
+  }
+  
+  .bg-f1-purple {
+    @apply bg-[#9146FF];
+  }
+  
+  .bg-f1-green {
+    @apply bg-[#27F06D];
+  }
+  
+  .bg-f1-yellow {
+    @apply bg-[#FFBC00];
+  }
+  
+  .bg-f1-blue {
+    @apply bg-[#0084FF];
+  }
+  
+  .bg-f1-orange {
+    @apply bg-[#FF8700];
+  }
+  
+  .font-f1 {
+    @apply font-['Titillium_Web'];
+  }
+  
+  .font-body {
+    @apply font-['Inter'];
+  }
+  
+  .font-mono {
+    @apply font-['JetBrains_Mono'];
+  }
+  
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Animations for telemetry */
+  .animate-rpm {
+    animation: pulse 2s infinite;
+  }
+  
+  .animate-flash {
+    animation: flash 0.5s;
+  }
+}
